@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Sublime Text Setup</title>
+  <meta name="description" content="Sublime Text">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="/guides/sublime_text.html">
+  <link rel="alternate" type="application/rss+xml" title="Cleversteam Playbook" href="/feed.xml">
+  <link rel="stylesheet" href="https://use.typekit.net/qgi7htv.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306.5 65.34"><defs><style>.cls-1{font-size:63.5px;fill:#fff;font-family:BebasNeueBook, Bebas Neue;letter-spacing:0.05em;}.cls-2{font-family:BebasNeueBold, Bebas Neue;font-weight:700;}</style></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><text class="cls-1" transform="translate(0 53.97)">Clever<tspan class="cls-2" x="160.71" y="0">STEAM</tspan></text></g></g></svg>  
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Sublime Text Setup</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="sublime-text">Sublime Text</h1>
+
+<p>A guide to setting up Sublime Text to maintain the best coding standards and maximise your productivity</p>
+
+<h2 id="use-the-right-configuration-options">Use the right configuration options</h2>
+
+<ul>
+  <li>
+    <p>Make sure to configure the Sublime Text to use soft-tabs. You can change that settings in Preferences -&gt; Settings (User). Example:</p>
+
+    <pre><code class="language-JSON">  {
+    "detect_indentation": false,
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true
+  }
+</code></pre>
+  </li>
+  <li>
+    <p>Make the editor work for you. Use whatever color scheme, font size, key-bindings etc. that suit your preferences. As long as you’re conforming to the style guidelines, you’re all good</p>
+  </li>
+</ul>
+
+<h2 id="supercharge-your-environment-with-package-control">Supercharge Your Environment With Package Control</h2>
+<p>Sublime Text is a good editor out of the box, but you can turn it into a great one by using Package Control!</p>
+
+<p><a href="https://packagecontrol.io/">Package Control</a></p>
+
+<p>Follow the installation instructions at the link below, it’s all quite straightforward</p>
+
+<p><a href="https://packagecontrol.io/installation">Installation</a></p>
+
+<p>After installing the Package Control, you can install new plugin straight out of Sublime Text command pallette (<code class="highlighter-rouge">cmd+shift+p</code> on Mac OS X, <code class="highlighter-rouge">ctrl+shift+p</code> on Linux/Windows).</p>
+
+<ul>
+  <li>
+    <p>Just select <code class="highlighter-rouge">Package Control: Install Package</code> from the command pallette and find the plugin you want to use to install it</p>
+  </li>
+  <li>
+    <p>Pretty much all packages are hosted on Github, make sure to always follow the installation instructions found in the package documentation to see whether any new changes/settings need to be added to your configuration files</p>
+  </li>
+  <li>
+    <p>For instance, package like Sublime Linter needs to be able to find linter executables. It looks at the paths in your environment <code class="highlighter-rouge">PATH</code> variable, but you can add specific paths like your RVM ruby in the package config file.</p>
+  </li>
+  <li>
+    <p>Example, in my Preferences -&gt; Package Settings -&gt; SublimeLinter -&gt; Settings - User, I’ve added the path declaration so all my linter executables are found:</p>
+
+    <pre><code class="language-JSON">  "paths": {
+    "linux": [],
+    "osx": [
+        "/Users/Tomasz/.rvm/gems/ruby-2.3.1@global/bin/",
+        "/Users/Tomasz/.rvm/gems/ruby-2.2.2@global/bin/",
+        "/usr/local/bin/"
+    ],
+    "windows": []
+}
+</code></pre>
+  </li>
+</ul>
+
+<p>If the package is not working. Make sure it is designed to work with your version of Sublime. Also View -&gt; Show Console should give you some information about missing executables, wrong declarations and such. Some packages like SublimeLinter got their own debug mode to make fixing any issues even easier.</p>
+
+<h2 id="useful-packages">Useful packages</h2>
+
+<p>Below is the list of some of my favourite packages and quick overview of some of their functionality</p>
+
+<ul>
+  <li>
+    <p><a href="https://github.com/alienhard/SublimeAllAutocomplete">All Autocomplete</a></p>
+
+    <p>By default, Sublime autosuggests you code based on the open file. With this extension, it will autosuggest methods/variables/etc from other open files. Great when jumping back between couple of different files, putting controller variables in the view and such</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/aponxi/sublime-better-coffeescript">Better CoffeeScript</a></p>
+
+    <p>For those fond of CoffeeScript, syntax highlighting, completions and other niceties</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/surjikal/sublime-coffee-compile">CoffeeCompile</a></p>
+
+    <p>For those not as confident with their CoffeeScript chops, this lets you preview the compiled JavaScript to easily identify errors</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/weslly/ColorPicker">Color Picker</a></p>
+
+    <p>One for the front-end people, nice and pretty Color Picker. No more referencing those hex values from elsewhere!</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/sergeche/emmet-sublime">Emmet</a></p>
+
+    <p>Speed up your development of HTML and CSS. Want to code up a 6 elements list in one line? HTML5 boilerplate? This one’s for you</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/jisaacks/GitGutter">GitGutter</a></p>
+
+    <p>Allows you to see differences you made from the current git revision. Good for tracking what’s new and those pesky unwanted branch checkouts</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/titoBouzout/SideBarEnhancements">Sidebar Enhancements</a></p>
+
+    <p>Cut, copy, paste, duplicate files straight from within Sublime. Why this isn’t part of the default installation is a mystery. A must have</p>
+  </li>
+  <li>
+    <p><a href="SublimeLinter3">SublimeLinter</a></p>
+
+    <p>A game changer. No more missing end statement. No more unclosed brackets. No more syntax issues. SublimeLinter will give you a nice and verbose warnings when you try to do something that will make your code fail.</p>
+
+    <p>This one is bit different because on its own, it doesn’t do anything. You need to install language specific linters (as a package control plugins) to enable the functionality. I mostly use <a href="https://github.com/SublimeLinter/SublimeLinter-ruby">Ruby linter</a> but there’s one for nearly every programming language/framework imaginable.</p>
+
+    <p>With linters, always, ALWAYS read the installation instructions to make sure you’ve got required executables available and loaded in your path.</p>
+  </li>
+  <li>
+    <p><a href="https://github.com/SublimeText/TrailingSpaces">Trailing Spaces</a></p>
+
+    <p>Highlight trailing spaces and delete them in bulk. You’d be surprised how many of those are lurking in your code.</p>
+  </li>
+</ul>
+
+<h2 id="learn-the-power-of-sublime-text">Learn the power of Sublime Text</h2>
+<p>Sublime is a great tool but takes a while to get used to it. There’s also some not-so obvious functionalities that will change the way, you use the editor (I for one was blissfully unaware that I can just press <code class="highlighter-rouge">cmd+r</code> to jump to any definition in the Ruby file!)</p>
+
+<p>There are some great guides out there and I’d wholeheartedly recommend reading/watching some of them to learn how you can use Sublime effectively.</p>
+
+<p>My personal recommendation is <a href="http://code.tutsplus.com/courses/perfect-workflow-in-sublime-text-2">Tutsplus video tutorial</a>. It’s a longer one (nearly 2 hours!) and made for Sublime Text 2, but everything still applies. It is freely available, you just need to register for an account on Tutsplus. After you watch this one, you’ll be a true Sublime ninja</p>
+
+<h2 id="final-word">Final word</h2>
+<p>I love Sublime, but many people don’t. There’re many Vim, Emacs, Atom faithful out there. That’s all perfectly fine.</p>
+
+<p>Editor is a tool. An important one, but tool nonetheless. Don’t use editor because everyone uses it. Use one that you’re familiar with and suits your style/preference. Whatever you use, just make sure your config (tabs/syntax/etc) follow our <a href="https://cleversteam.github.io/guides/ruby_rails_style_guide.html">Coding standards</a>. Simple as that!</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Git Protocol</title>
+  <meta name="description" content="Git Protocol">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="/guides/git.html">
+  <link rel="alternate" type="application/rss+xml" title="Cleversteam Playbook" href="/feed.xml">
+  <link rel="stylesheet" href="https://use.typekit.net/qgi7htv.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306.5 65.34"><defs><style>.cls-1{font-size:63.5px;fill:#fff;font-family:BebasNeueBook, Bebas Neue;letter-spacing:0.05em;}.cls-2{font-family:BebasNeueBold, Bebas Neue;font-weight:700;}</style></defs><title>Asset 1</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><text class="cls-1" transform="translate(0 53.97)">Clever<tspan class="cls-2" x="160.71" y="0">STEAM</tspan></text></g></g></svg>  
+    </a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Git Protocol</h1>
+  </header>
+
+  <div class="post-content">
+    <h1 id="git-protocol">Git Protocol</h1>
+
+<p>A guide for programming within version control.</p>
+
+<h1 id="maintain-a-repo">Maintain a Repo</h1>
+
+<ul>
+  <li>Avoid including files in source control that are specific to your
+development machine or process.</li>
+  <li>Delete local and remote feature branches after merging.</li>
+  <li>Perform work in a feature branch.</li>
+  <li>Rebase frequently to incorporate upstream changes.</li>
+  <li>Use a pull request for code reviews.</li>
+</ul>
+
+<h1 id="write-a-feature">Write a Feature</h1>
+
+<p>Create a local feature branch based off current working branch. Branch name should be as descriptive as possible and preferably include the name of the ticket.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git checkout current_working_branch
+git pull
+git checkout -b &lt;branch-name&gt;
+</code></pre>
+</div>
+
+<p>Rebase frequently to incorporate upstream changes.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git fetch origin
+git rebase origin/master
+</code></pre>
+</div>
+
+<p>Resolve conflicts. When feature is complete and tests pass, stage the changes.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git add --all
+</code></pre>
+</div>
+
+<p>When you’ve staged the changes, commit them.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git status
+git commit --verbose
+</code></pre>
+</div>
+
+<p>Write a <a href="http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html">good commit message</a>, prefixed with the name of the case. Example format:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Fix User Login: Summary under 50 characters
+
+* More information about commit (under 72 characters).
+* More information about commit (under 72 characters).
+</code></pre>
+</div>
+
+<p>If you’ve created more than one commit,
+<a href="https://help.github.com/articles/about-git-rebase/">use <code class="highlighter-rouge">git rebase</code> interactively</a>
+to squash them into cohesive commits with good messages:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git rebase -i origin/master
+</code></pre>
+</div>
+
+<p>Share your branch.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git push origin &lt;branch-name&gt;
+</code></pre>
+</div>
+
+<p>Submit a <a href="https://help.github.com/articles/using-pull-requests/">GitHub pull request</a>.</p>
+
+<p>Ask for a code review from someone else in your sprint team.</p>
+
+<h1 id="review-code">Review Code</h1>
+
+<p>A team member other than the author reviews the pull request. They follow
+<a href="/guides/code_review.html">Code Review</a> guidelines to avoid
+miscommunication.</p>
+
+<p>They make comments and ask questions directly on lines of code in the GitHub
+web interface or in the project’s chat room.</p>
+
+<p>For changes which they can make themselves, they check out the branch.</p>
+
+<p>They make small changes right in the branch, test the feature on their machine,
+run tests, commit, and push.</p>
+
+<p>When satisfied, they merge.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+
+  </body>
+
+</html>

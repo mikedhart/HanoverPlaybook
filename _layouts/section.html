@@ -1,0 +1,10 @@
+<h1>{{ page.title }}</h1>
+<ul>
+{% for guide in site.guides %}
+{% if guide.section == page.section %}
+<li>
+  <a class="post-link" href="{{ guide.url | prepend: site.baseurl }}">{{ guide.title }}</a>
+</li>
+{% endif %}
+{% endfor %}
+</ul>

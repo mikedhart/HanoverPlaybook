@@ -1,0 +1,10 @@
+---
+layout: default
+---
+
+<div class="home">
+  <p>We partner with organisations of all sizes to design, develop, and grow their products for iOS, Android, and the web. These are our standards as an organisation.</p>
+    {% for section in site.sections %}
+      <p>{{ section.output }}</p>
+    {% endfor %}
+</div>
