@@ -111,6 +111,9 @@ We use the following sub processors:
 * **Message Bird**
   * Our applications send text messages. To send them, we use Message Bird
   * Address: 8th fl, 6 New Street Square, New Fetter Lane, London EC4A 3AQ, United Kingdom
+* **Bugsnag**
+  * Used for: Bug Tracking
+  * Address: 110 Sutter Street, Suite 1000, San Francisco, CA
 
 ## Contractors and Remote Workers
 At Cleversteam we regularly employ contractors and remote workers. Regardless of whether they're employed on a contract basis or a full time staff basis, all staff are required to adhere to the following [security protocol][securityprotocol]
